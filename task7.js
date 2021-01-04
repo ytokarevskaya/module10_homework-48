@@ -1,27 +1,25 @@
-let arr = [6, 10, 11, 93, 0, 0, null, 15]
-let even = 0
-let odd = 0
-let NotANumber = 0
-let zero = 0
-let i = 0
-let type = typeof (arr[i])
+let arr = [6, 10, 11, 93, 0, 0, null, 15, undefined, NaN, '15', true, false]
+let even = 0, odd = 0, zero = 0;
+
 for (let i=0; i<arr.length; i++) {
-    if (arr[i] % 2 === 0 && arr[i] !== 0 && type !== 'string' || 'boolean' || 'object' && isNaN(arr[i]) === false) {
-        even++;
+    if (typeof arr[i] === 'number' && !isNaN(arr[i])) {
+        if (arr[i] === 0) {
+            zero++;
+        } else if (arr[i] % 2 === 0) {
+            even++;
+        } else {
+            odd++;
+        }
     }
 }
-for (let i=0; i<arr.length; i++) {
-    if (arr[i] % 2 !== 0 && arr[i] !== 0 && type !== 'string' || 'boolean' || 'object' && isNaN(arr[i]) == false) {
-        odd++
-    }
-}
-for (let i=0; i<arr.length; i++) {
-    if (arr[i] == 0) {
-        zero++
-    }
-}
-for (let i=0; i<arr.length; i++) {
-    if (isNaN(arr[i]) == true || type == 'string' || 'boolean' || 'object')
-        NotANumber++
-}
-console.log(even, odd, zero, NotANumber)
+
+console.log(`Четных элементов - ${even}`);
+console.log(`Нечетных элементов - ${odd}`);
+console.log(`Нулей - ${zero}`);
+
+// Задание вывполнено неверно, подсчёт четных\нечетных\нулей не соответствует действительности. В вашем решении есть несколько проблем:
+// 1. Поскольку переменная type объявляется вне цикла, в неё записывается тип только 1-го элемента массива. Соответственно, в условных операторах проверяется на тип только 1-й элемент
+// 2. Использование нескольких циклов в данном случае избыточно. Все проверки можно сделать в рамках одного цикла, если правильно написать условные операторы. 
+// 3. type !== 'string' || 'boolean' || 'object' - это условие написано неправильно. При проверке на несколько значений нужно каждый раз писать все выражение целиком. Т.е. правильная запись бы выглядела так: type !== 'string' && type !== 'boolean' && type !== 'object'
+// 4. Сами условия проверки в условных операторах слишком усложнены. Можно записать то же самое гораздо компактнее и понятнее, используя вложенность условного оператора
+// Исправила ваш код на правильный вариант

@@ -1,5 +1,5 @@
 let x=+prompt('введите число')
-if (isNaN(x) === true) {
+if (isNaN(x)) { // Сравнение с true - избычточно, функция isNaN и так возвращает логичнское значение (true/false)
     alert('не число')
 }
 else{

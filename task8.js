@@ -1,11 +1,13 @@
-let massive;
-massive = new Map()
+let massive = new Map()
+// Если значение записывается в переменную сразу же на следующей строчке, нет смысла разделять объявление переменной и запись в неё значения
 massive.set('1', 'a')
 massive.set('s', 'b')
 massive.set(1, 'z')
-let z = massive.keys()
-let e = massive.values()
-console.log(z, e)
-for (let j=0; j<massive.size; j++){
-    console.log(z[j] + ' - ключ, а ' + e[j] + ' - значение' )
+let keys = massive.keys() // Старайтесь давать переменным осмысленные имена, чтобы по имени переменной было сразу понятно, что за значение в ней содержится
+// let e = massive.values()
+// console.log(z, e)
+for (let key of keys){
+    console.log(key + ' - ключ, а ' + massive.get(key) + ' - значение' )
 }
+
+// Задание выполнено неверно. Вместо ключей и значений выводится undefined. Исправила выше на правильный вариант
